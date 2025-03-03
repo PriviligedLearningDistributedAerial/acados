@@ -39,6 +39,25 @@ print(sys.version_info)
 if sys.version_info < (3,5):
     sys.exit('Python version 3.5 or later required. Exiting.')
 
+if sys.version_info < (3, 7):
+    requires=[
+       'numpy==1.19.5',
+       'scipy==1.5.4',
+       'casadi==3.5.5',
+       'matplotlib==3.3.4',
+       'future-fstrings',
+       'cython==3.0.12',
+    ]
+else:
+    requires=[
+       'numpy',
+       'scipy',
+       'casadi',
+       'matplotlib',
+       'future-fstrings',
+       'cython',
+    ]
+
 setup(name='acados_template',
     version='0.1',
     python_requires='>=3.5',
@@ -55,14 +74,7 @@ setup(name='acados_template',
       "root": "../..",
       "relative_to": __file__
     },
-    install_requires=[
-       'numpy',
-       'scipy',
-       'casadi',
-       'matplotlib',
-       'future-fstrings',
-       'cython',
-    ],
+    install_requires=requires,
     package_data={'': [
         'acados_layout.json',
         'acados_sim_layout.json',
